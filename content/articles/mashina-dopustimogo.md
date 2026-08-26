@@ -1,5 +1,5 @@
 ---
-title: "Машина допустимого"
+title: "Машина недопустимого"
 slug: "mashina-dopustimogo"
 date: "2026-08-23"
 category: "CULTURE"
