@@ -1,15 +1,11 @@
 {
   "name": "offset-netlify",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "OFFSET — minimal online newspaper for Netlify",
+  "description": "OFFSET — minimal online newspaper for Netlify. Articles are Markdown files.",
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "node scripts/dev.mjs"
-  },
-  "devDependencies": {
-    "@stackbit/cms-git": "latest",
-    "@stackbit/types": "latest"
   }
 }

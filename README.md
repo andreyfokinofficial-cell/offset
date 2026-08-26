@@ -1,45 +1,60 @@
-# OFFSET — Netlify edition
+# OFFSET — Netlify + Markdown
 
-A minimal black-and-white online newspaper with editable file-based articles.
+Минималистичное онлайн-издание. Netlify отвечает только за публикацию сайта, GitHub — за статьи и изображения.
 
-## What is included
-- Homepage with article cards
-- Optional feature images
-- READ MORE and SHARE
-- Full article pages with images inside the text
-- Search overlay
-- Mobile layout
-- 404, sitemap, robots.txt
-- Netlify Visual Editor configuration using Git CMS
+## Где находятся статьи
 
-## Recommended publishing setup (editable)
-1. Create a new GitHub repository and upload all files from this source package.
-2. In Netlify choose **Add new project → Import an existing project** and connect that repository.
-3. Netlify reads `netlify.toml`: build command is `npm run build`, publish directory is `dist`.
-4. After the first successful deploy, open **Project configuration → Visual Editor** and create the preview environment.
-5. Open **Visual Editor → Content → Articles** to add or edit publications.
+Все публикации лежат здесь:
 
-Netlify Visual Editor requires a Git-connected repository. A drag-and-drop deploy of `dist` works as a public website, but does not provide file editing in Visual Editor.
+`content/articles/*.md`
 
-## Article fields
-Each article is stored as JSON in `content/articles/` and contains:
-- `title`
-- `slug`
-- `date`
-- `category`
-- `excerpt`
-- `featureImage` (optional)
-- `featureImageAlt`
-- `body` (Markdown)
+Один Markdown-файл = одна статья.
 
-Images uploaded through the editor are configured to live in `public/images/`.
+## Быстрая публикация новой статьи через GitHub
 
-## Local preview
-```bash
-npm run build
-npm run dev
-```
-Then open http://localhost:3000
+1. Откройте репозиторий на GitHub.
+2. Перейдите в `content/articles`.
+3. Нажмите **Add file → Create new file**.
+4. Назовите файл, например `sluzhenie.md`.
+5. Скопируйте структуру из `ARTICLE-TEMPLATE.md`.
+6. Заполните заголовок, slug, дату, рубрику, preview и текст.
+7. Нажмите **Commit changes**.
+8. Netlify автоматически пересоберёт сайт.
 
-## Replace demo content
-The four supplied articles are placeholders. Edit or delete the JSON files in `content/articles/` after deploying, or replace them through Netlify Visual Editor.
+## Редактирование статьи
+
+Откройте нужный `.md` в `content/articles`, нажмите **Edit this file** (карандаш), измените текст и сделайте commit.
+
+## Изображения
+
+Загружайте файлы в:
+
+`public/images/`
+
+Обложка статьи:
+
+`featureImage: "/images/my-image.jpg"`
+
+Изображение внутри текста:
+
+`![Описание](/images/my-image.jpg "Подпись")`
+
+## Черновики
+
+В front matter статьи поставьте:
+
+`draft: true`
+
+Такая статья не попадёт в сборку сайта. Для публикации измените на:
+
+`draft: false`
+
+## Netlify
+
+Настройки уже находятся в `netlify.toml`:
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Node: 22
+
+Никакой Visual Editor не требуется.

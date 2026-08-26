@@ -1,31 +1,33 @@
-# OFFSET — публикация в Netlify
+# OFFSET: работа после перехода на Markdown
 
-## Вариант 1 — рекомендуемый: сайт + редактирование
+## Разовая миграция существующего GitHub-репозитория
 
-1. Создайте пустой репозиторий на GitHub.
-2. Распакуйте `OFFSET-Netlify-source.zip` и загрузите все файлы в репозиторий.
-3. В Netlify выберите **Add new project → Import an existing project → GitHub**.
-4. Выберите репозиторий OFFSET.
-5. Настройки сборки уже находятся в `netlify.toml`:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-6. После первого deploy откройте **Project configuration → Visual Editor** и настройте Preview environment.
-7. Для редактирования: **Visual Editor → Content → Articles**.
+Если в репозитории уже установлена старая JSON-версия OFFSET:
 
-Каждая статья имеет поля: заголовок, URL-slug, дата, рубрика, короткое превью, картинка, описание картинки и основной текст Markdown.
+1. Удалите старые файлы `content/articles/*.json`.
+2. Удалите `stackbit.config.ts` — он больше не нужен.
+3. Замените `scripts/build.mjs` новым файлом из этого пакета.
+4. Замените `package.json`.
+5. Загрузите новые `.md`-файлы из `content/articles/`.
+6. Оставьте `netlify.toml`, `public/`, `scripts/dev.mjs` и остальные файлы проекта.
+7. Сделайте commit в `main`.
 
-## Вариант 2 — самый быстрый: только публикация
+Netlify автоматически запустит новую сборку.
 
-Распакуйте `OFFSET-Netlify-deploy.zip` и перетащите папку/файлы в Netlify Drop или Manual deploy.
+## Новая статья
 
-Этот вариант сразу публикует сайт, но не даёт редактировать статьи через Visual Editor, потому что Visual Editor работает с Git-репозиторием.
+GitHub → `content/articles` → **Add file → Create new file**.
 
-## Добавление изображений
+Например: `sluzhenie.md`.
 
-Изображения находятся в `public/images/`. В статье можно использовать Markdown:
+Используйте `ARTICLE-TEMPLATE.md`.
 
-`![Подпись](/images/my-image.jpg "Комментарий к изображению")`
+## Изменить статью
 
-## Демонстрационные статьи
+GitHub → `content/articles` → нужный `.md` → карандаш **Edit this file** → **Commit changes**.
 
-Четыре статьи в `content/articles/` — примеры для проверки дизайна. Их можно удалить или заменить после подключения редактора.
+## Добавить изображение
+
+GitHub → `public/images` → **Add file → Upload files**.
+
+После загрузки используйте путь `/images/имя-файла.jpg`.

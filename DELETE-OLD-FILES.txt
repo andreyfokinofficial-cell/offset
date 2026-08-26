@@ -1,0 +1,7 @@
+В существующем GitHub-репозитории OFFSET удалите:
+
+1. stackbit.config.ts
+2. Все старые файлы content/articles/*.json
+
+Затем загрузите/замените файлы из этого пакета и сделайте Commit changes в main.
+Netlify автоматически пересоберёт сайт.
